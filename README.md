@@ -16,8 +16,8 @@ A simple web app built with **Streamlit** and **Python** that converts Indian Ru
 
 ## 🖼️ Preview
 
-![Currency Converter Screenshot](path/to/your/screenshot.png)
-*(Replace with an actual image)*
+![Currency Converter Screenshot](path/to/your/S1.png)
+
 
 ## 🛠️ Technologies Used
 
