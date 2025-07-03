@@ -1,119 +1,98 @@
-Sure! Here's the finalized **`README.md`** template tailored for your **Live Currency Converter** project, with placeholders for your **screenshots** and **demo video**. You can copy-paste this directly into your repo:
+Here's a clean and informative **README** file for your **Live Currency Converter** Streamlit project:
 
 ---
 
-````markdown
 # 💱 Live Currency Converter
 
-A simple and user-friendly **Currency Converter Web App** built using **Python** and **Streamlit**. Instantly convert **Indian Rupees (INR)** to foreign currencies like **USD, EUR, GBP, and JPY** using real-time exchange rates.
+A simple web app built with **Streamlit** and **Python** that converts Indian Rupees (INR) to popular foreign currencies like **USD**, **EUR**, **GBP**, and **JPY** in real-time using data from the [ExchangeRate API](https://www.exchangerate-api.com/).
 
----
+## 🚀 Features
 
-## 📸 Demo
+* Input amount in INR
+* Select from multiple target currencies (USD, EUR, GBP, JPY)
+* Fetch live exchange rates
+* Displays the converted amount
+* Clean and minimal Streamlit UI
 
-<!-- 📷 Add your screenshots below -->
-![App Screenshot 1](screenshots/sc<img width="959" alt="Screenshot 2025-07-04 004434" src="https://github.com/user-attachments/assets/4243914f-d628-4697-af3f-a8b9cb71ffc6" />
-reenshot1.png)
-![App Screenshot 2](screenshots/screenshot2.png)
+## 🖼️ Preview
 
-<!-- 🎥 Add your demo video link below -->
-🎥 [Watch Demo Video](https:
+![Currency Converter Screenshot](path/to/your/screenshot.png)
+*(Replace with an actual image)*
 
-https://github.com/user-attachments/assets/7c38e6a0-67a7-4498-ae5a-10cfb604df10
+## 🛠️ Technologies Used
 
-//your-video-link.com)
+* **Python**
+* **Streamlit** – for building the UI
+* **Requests** – for making HTTP requests to the API
+* **ExchangeRate API** – to get the live rates
 
----
+## 📦 Setup Instructions
 
-## 🛠️ Tech Stack
-
-- 🐍 Python
-- 📊 Streamlit
-- 🌐 ExchangeRate API
-- ⚡ Requests Library
-
----
-
-## 🔥 Features
-
-- 💰 Convert INR to USD, EUR, GBP, or JPY
-- 📡 Uses real-time exchange rates via API
-- 📲 Clean and responsive UI
-- 🚀 Instant conversion with one click
-- 🧠 Built with only basic Python knowledge
-
----
-
-## 🚀 How to Run the App
-
-### 1️⃣ Clone the repository
+1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/agamsiingh/your-repo-name.git
-cd your-repo-name
-````
+git clone https://github.com/yourusername/currency-converter-streamlit.git
+cd currency-converter-streamlit
+```
 
-### 2️⃣ Install dependencies
+2. **Install dependencies:**
 
 ```bash
 pip install streamlit requests
 ```
 
-### 3️⃣ Launch the app
+3. **Run the app:**
 
 ```bash
-streamlit run main.py
+streamlit run app.py
 ```
 
-Then open the browser at `http://localhost:8501`.
+Replace `app.py` with your actual filename if it's different.
 
----
+## 📁 Project Structure
 
-## 💾 Code Overview
+```
+currency-converter-streamlit/
+├── app.py
+├── README.md
+└── requirements.txt
+```
+
+## 📄 Sample Code
 
 ```python
-# User input
-amount = st.number_input("Enter the amount in INR")
+import streamlit as st
+import requests
 
-# Target currency selection
+st.title("💱 Live Currency Converter")
+
+amount = st.number_input("Enter the amount in INR", min_value=1)
 target_currency = st.selectbox("Convert to:", ["USD", "EUR", "GBP", "JPY"])
 
-# API Call
-url = "https://api.exchangerate-api.com/v4/latest/INR"
-response = requests.get(url)
-rate = data["rates"][target_currency]
-converted = rate * amount
+if st.button("Convert"):
+    url = "https://api.exchangerate-api.com/v4/latest/INR"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        rate = data["rates"][target_currency]
+        converted = rate * amount
+        st.success(f"{amount} INR = {converted:.2f} {target_currency}")
+    else:
+        st.error("❌ Failed to fetch conversion rate.")
 ```
+
+## 📌 To-Do (Optional Enhancements)
+
+* Add more currencies
+* Include historical rate charts
+* Improve UI with themes or images
+* Add currency flags
+
+## 📃 License
+
+This project is licensed under the MIT License.
 
 ---
 
-## 📂 Folder Structure
-
-```
-📁 DSA-Tracker_by-react/
- ┣ 📄 main.py              # Streamlit app script
- ┣ 📄 README.md            # This file
- ┣ 📄 requirements.txt     # Dependencies
- ┗ 📁 screenshots/         # Add your screenshots here
-```
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## 🙋‍♂️ Author
-
-Made with ❤️ by **[Agam Singh](https://github.com/agamsiingh)**
-
-Feel free to contribute, fork, or give a ⭐ if you found this useful!
-
-```
-
----
-
-Let me know if you'd like help creating a deployment version on **Streamlit Cloud**, or want a badge for "View App Live" once it's hosted!
-```
+Let me know if you'd like help creating a `requirements.txt`, a deployment guide, or a GitHub-ready version with badges!
